@@ -5,7 +5,7 @@ export default class CommandNotFoundPlugin {
   }
 
   async handler(ctx, next) {
-    if (ctx.answered || ctx.isChat) {
+    if (ctx.answered) {
       return next();
     }
 

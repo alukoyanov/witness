@@ -1,8 +1,8 @@
 {
 	"vk": {
-    "groupId": 000000000
+    "groupId": 217675887
   },
   "redisTag": "mybot",
   "mentions": [ "зая", "пуся", "/" ],
-  "sendErrorsTo": "durov"
+  "sendErrorsTo": "alkurusu"
 }

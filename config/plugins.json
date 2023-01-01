@@ -10,5 +10,6 @@
 	"common/onlineStatus",
 	"common/temp",
 	"bot/commandNotFound",
-	"bot/error"
+	"bot/error",
+	"bot/saveMessages"
 ]
