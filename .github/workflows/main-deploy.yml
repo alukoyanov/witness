@@ -24,7 +24,9 @@ jobs:
           git clean -f -d
           git pull
       - name: Installing deps
-        run: "npm install -g yarn && yarn"
+        run: "npm install -g yarn typescript && yarn"
+      - name: Compiling typescript files
+        run: "tsc"
       - name: Creating temp folder
         run: "mkdir -p temp"
       - name: Restarting node process
