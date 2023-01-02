@@ -9,13 +9,11 @@ export default class ErrorPlugin {
             ctx.builder()
                 .lines([
                 'Что-то пошло не так.'
-            ])
-                .photo('./assets/images/error.png')
-                .bad();
+            ]).bad();
             const admin = await usersPlugin.resolve(henta.config.public.sendErrorsTo);
             admin.send([
                 `😶 ${ctx.user} вызвал ошибку:`,
-                error.stack
+                JSON.stringify(error)
             ]);
         });
     }

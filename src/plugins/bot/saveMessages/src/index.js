@@ -1,11 +1,16 @@
 export default class SaveMessagesPlugin {
   init(henta) {
-    henta.vk.updates.on('message', this.handler.bind(this));
+    this.henta = henta;
+    this.henta.vk.updates.on('message', this.handler.bind(this));
   }
 
   async handler(ctx, next) {
-    console.log(ctx, next);
+    const wordStore = this.henta.getPlugin('bot/wordStore');
+    
+    console.log(wordStore);
 
+    wordStore.save(ctx.text);
+    
     return next();
   }
 }

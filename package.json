@@ -1,7 +1,7 @@
 {
   "name": "@henta/bot-base",
-  "version": "0.2.0",
-  "description": "My First Bot",
+  "version": "0.1.0",
+  "description": "re:Witless",
   "main": "index.js",
   "type": "module",
   "dependencies": {

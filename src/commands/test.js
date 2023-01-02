@@ -24,14 +24,9 @@ export default class TestCommand {
     const packageInfo = await ctx.henta.util.load('package.json');
     const dbPing = await this.getDbPing(ctx);
     const apiPing = await this.getApiPing();
-
+    
     ctx.answer([
-      '✅ Бот работает:',
-      packageInfo.description && `-- ${packageInfo.description} V${packageInfo.version}`,
-      `-- *hentavk(HENTA) V${ctx.henta.version}`,
-      `-- Node JS ${process.version}`,
-      dbPing && `-- Запрос БД: ${dbPing}мс`,
-      `-- Запрос api.vk.com: ${apiPing}мс`
+      `✅ ${packageInfo.description} V${packageInfo.version} (${apiPing}мс)`,
     ]);
   }
 }
