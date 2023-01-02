@@ -27,6 +27,11 @@ jobs:
             npm i -g typescript
           fi
           
+      - name: Installing NodeJS
+        run: |
+          nvm install 16.13.0
+          nvm use 16.13.0
+          
       - name: Pulling changes
         run: |
           eval `ssh-agent -s`
