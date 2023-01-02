@@ -1,8 +1,11 @@
 **/node_modules/**
-./temp
+./dist
 **/build/**
 node_modules
 *.sqlite3
 src/plugins/bot/error/yarn.lock
 src/plugins/common/**
 *.lock
+
+src/services/**/*.js
+src/plugins/bot/**/*.js

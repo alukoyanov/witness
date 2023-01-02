@@ -13,13 +13,12 @@ export default class ErrorPlugin {
         .lines([
           'Что-то пошло не так.'
         ])
-        .photo('./assets/images/error.png')
         .bad();
 
       const admin = await usersPlugin.resolve(henta.config.public.sendErrorsTo);
       admin.send([
         `😶 ${ctx.user} вызвал ошибку:`,
-        error.stack
+        error
       ]);
     });
   }

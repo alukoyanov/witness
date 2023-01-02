@@ -11,6 +11,6 @@
 	"common/temp",
 	"bot/commandNotFound",
 	"bot/error",
-	"bot/saveMessages",
+	"bot/onMessage",
 	"bot/wordStore"
 ]
