@@ -13,7 +13,7 @@ export default class ErrorPlugin {
             const admin = await usersPlugin.resolve(henta.config.public.sendErrorsTo);
             admin.send([
                 `😶 ${ctx.user} вызвал ошибку:`,
-                JSON.stringify(error)
+                error
             ]);
         });
     }

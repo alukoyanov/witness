@@ -10,7 +10,7 @@ export default class SaveMessagesPlugin {
     console.log(wordStore);
 
     wordStore.save(ctx.text);
-    
+        
     return next();
   }
 }
