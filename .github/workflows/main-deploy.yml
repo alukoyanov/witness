@@ -37,11 +37,11 @@ jobs:
           git clean -f -d
           git pull
       - name: Installing deps
-        run: yarn
+        run: cd ~/witness && yarn
       - name: Compiling ts files
-        run: tsc
+        run: cd ~/witness && tsc
       - name: Creating temp folder
-        run: mkdir -p temp
+        run: cd ~/witness && mkdir -p temp
       - name: Restarting node process
         run: pm2 restart re:Witless
       
