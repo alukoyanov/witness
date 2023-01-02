@@ -1,0 +1,32 @@
+run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
+
+on:
+  push:
+    branches:
+      - main
+      
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Configuring git details
+        run: |
+          git config --global user.name "Witness server"
+          git config --global user.email "sunnext021999@gmail.com"
+          
+      - name: Pulling changes
+        run: |
+          eval `ssh-agent -s`
+          ssh-add ~/.ssh/witness
+          cd ~/witness
+          git fetch --all
+          git reset --hard origin/main
+          git clean -f -d
+          git pull
+      - name: Installing deps
+        run: "npm install -g yarn && yarn"
+      - name: Creating temp folder
+        run: "mkdir -p temp"
+      - name: Restarting node process
+        run: "pm2 restart re:Witless"
+      
