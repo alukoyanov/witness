@@ -7,5 +7,7 @@ src/plugins/bot/error/yarn.lock
 src/plugins/common/**
 *.lock
 
-src/services/**/*.js
-src/plugins/bot/**/*.js
+**/*.js
+
+# remove this in future
+!src/commands/
