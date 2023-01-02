@@ -9,10 +9,23 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
-      - name: Configuring git details
+      - name: Configuring Git
         run: |
           git config --global user.name "Witness server"
           git config --global user.email "sunnext021999@gmail.com"
+      
+      - name: Installing main packages
+        run: |
+          if ! command -v yarn &> /dev/null
+          then
+            rm -rf $(npm list -g --depth=0 | head -1)/node_modules/yarn
+            npm i -g yarn
+          fi
+          if ! command -v tsc &> /dev/null
+          then
+            rm -rf $(npm list -g --depth=0 | head -1)/node_modules/typescript
+            npm i -g typescript
+          fi
           
       - name: Pulling changes
         run: |
@@ -24,11 +37,11 @@ jobs:
           git clean -f -d
           git pull
       - name: Installing deps
-        run: "npm install -g yarn typescript && yarn"
-      - name: Compiling typescript files
-        run: "tsc"
+        run: yarn
+      - name: Compiling ts files
+        run: tsc
       - name: Creating temp folder
-        run: "mkdir -p temp"
+        run: mkdir -p temp
       - name: Restarting node process
-        run: "pm2 restart re:Witless"
+        run: pm2 restart re:Witless
       
