@@ -45,7 +45,7 @@ jobs:
           git clean -f -d
           git pull
       - name: Installing deps
-        run: cd ~/witness && yarn
+        run: cd ~/witness && nvm use 16.13.0 && yarn
       - name: Compiling ts files
         run: cd ~/witness && tsc
       - name: Creating temp folder
