@@ -6,7 +6,7 @@ export default class Respondent
     
     public isTimeToAnswer()
     {
-        return (Math.random() * (10 - 1) + 1) > 8;
+        return (Math.random() * (10 - 1) + 1) > 9;
     }
     
     public sendMessage(text: string)
