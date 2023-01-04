@@ -12,6 +12,9 @@ export default class onMessagePlugin {
   }
 
   async handler(ctx: MessageContext, next) {
+    if (ctx.senderId < 0){
+      return next();
+    }
     const wordStore = this.henta.getPlugin('bot/wordStore');
 
     wordStore.save(ctx);
