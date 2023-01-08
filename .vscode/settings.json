@@ -1,4 +1,9 @@
 {
   "editor.tabSize": 4,
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "[typescript]": {
+    
+  },
+  // "explorer.excludeGitIgnore": true,
+  "explorer.fileNesting.enabled": true,
 }

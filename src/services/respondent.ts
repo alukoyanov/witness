@@ -11,7 +11,6 @@ export default class Respondent
     
     public sendMessage(text: string)
     {
-        console.log(text);
         this.ctx.send(text);
     }
 }
