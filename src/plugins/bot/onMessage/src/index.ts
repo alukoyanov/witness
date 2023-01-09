@@ -20,7 +20,11 @@ export default class onMessagePlugin {
         
         (new WordStore(this.henta)).save(ctx);
 
-        let respondent = new Respondent(ctx);
+        let respondent = new Respondent(this.henta, ctx);
+        if (respondent.isHasClaimsToUser()) {
+            respondent.sendClaims();
+        }
+        
         if (respondent.isTimeToAnswer()) {
             respondent.sendMessage((new MessageGenerator(this.henta)).generate(ctx.peerId));
         }
