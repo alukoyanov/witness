@@ -1,7 +1,8 @@
 import { Henta } from "henta/src";
-import { MessageContext } from "vk-io";
+import { Attachment, MessageContext, PhotoAttachment } from "vk-io";
 
-let latest_message_sent = 0;
+let latest_message_sent_1 = 0;
+let latest_message_sent_2 = 0;
 
 export default class Respondent
 {
@@ -18,8 +19,13 @@ export default class Respondent
     public isHasClaimsToUser()
     {
         if (this.ctx.senderId === 310132333) {
-            let has_claims = (Date.now() - latest_message_sent) > 600000
-            latest_message_sent = this.ctx.createdAt * 1000;
+            let has_claims = (Date.now() - latest_message_sent_1) > 600000
+            latest_message_sent_1 = this.ctx.createdAt * 1000;
+            return has_claims;
+        }
+        if (this.ctx.senderId === 549514959) {
+            let has_claims = (Date.now() - latest_message_sent_2) > 600000
+            latest_message_sent_2 = this.ctx.createdAt * 1000;
             return has_claims;
         }
         return false;
@@ -32,11 +38,23 @@ export default class Respondent
     
     public async sendClaims()
     {
-        this.ctx.sendPhotos(
-            [
-                {value: './assets/images/catFU.webp'},
-            ],
-            {message: '@dolgryn'},
-        );
+        if (this.ctx.senderId === 310132333) {
+            return this.ctx.reply({
+                attachment: await this.henta.vk.upload.messagePhoto({
+                    source: {
+                        value: './assets/images/catFU.webp'
+                    }
+                }),
+            });
+        }
+        if (this.ctx.senderId === 549514959) {
+            return this.ctx.reply({
+                attachment: await this.henta.vk.upload.messagePhoto({
+                    source: {
+                        value: './assets/images/catRose.webp'
+                    }
+                }),
+            });
+        }
     }
 }
