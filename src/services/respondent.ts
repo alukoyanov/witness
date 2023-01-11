@@ -4,6 +4,8 @@ import { Attachment, MessageContext, PhotoAttachment } from "vk-io";
 let latest_message_sent_1 = 0;
 let latest_message_sent_2 = 0;
 
+const TIME_NEED = 60000 * 60 * 2 // 2 часа
+
 export default class Respondent
 {
     constructor(
@@ -19,12 +21,12 @@ export default class Respondent
     public isHasClaimsToUser()
     {
         if (this.ctx.senderId === 310132333) {
-            let has_claims = (Date.now() - latest_message_sent_1) > 600000
+            let has_claims = (Date.now() - latest_message_sent_1) > TIME_NEED
             latest_message_sent_1 = this.ctx.createdAt * 1000;
             return has_claims;
         }
         if (this.ctx.senderId === 549514959) {
-            let has_claims = (Date.now() - latest_message_sent_2) > 600000
+            let has_claims = (Date.now() - latest_message_sent_2) > TIME_NEED
             latest_message_sent_2 = this.ctx.createdAt * 1000;
             return has_claims;
         }
