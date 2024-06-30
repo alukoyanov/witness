@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Configuring Git
         run: |
-          git config --global user.name "Witness server"
+          git config --global user.name "re:Witless server"
           git config --global user.email "sunnext021999@gmail.com"
       
       - name: Installing main packages
